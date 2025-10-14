@@ -120,3 +120,30 @@ window.addEventListener('resize', () => {
   const idx = [...tabs].findIndex(tab => tab.classList.contains('active'));
   moveIndicator(idx);
 });
+
+
+// qa section 
+
+document.querySelectorAll('.faq-question').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    const item = btn.parentElement;
+    const isOpen = item.classList.contains('open');
+
+    // Close all other open items
+    document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+      if (openItem !== item) {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-toggle').textContent = '+';
+      }
+    });
+
+    // Toggle current item
+    if (isOpen) {
+      item.classList.remove('open');
+      btn.querySelector('.faq-toggle').textContent = '+';
+    } else {
+      item.classList.add('open');
+      btn.querySelector('.faq-toggle').textContent = '−';
+    }
+  });
+});
