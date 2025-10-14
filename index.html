@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tunning Spot</title>
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer> </script>
+  <script src="script.js" defer></script>
+
+</head>
+
+<body>
+  <div class="nav-wrap">
+    <div class="navbar" id="navbar">
+      <a class="brand" href="#">
+        <div id="lottie-icon" class="brand-icon" aria-hidden="true"></div>
+        <span class="brand-name">Tunning Spot</span>
+      </a>
+
+      <!-- Desktop menu -->
+      <nav class="menu" aria-label="Primary">
+        <a href="#">About Product</a>
+        <a href="#features">Features</a>
+        <a href="#">Benefits</a>
+        <a href="#">FAQ</a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <a class="btn" href="#">Get Quote</a>
+
+      <!-- Hamburger (shown on small screens via CSS) -->
+      <button class="hamburger" id="hamburger"
+              aria-label="Toggle menu"
+              aria-controls="mobile-drawer"
+              aria-expanded="false">
+              <img src="assets/menu-bar.png" alt="" class="icon menu">
+              <img src="assets/close.png" alt="" class="icon close">
+     
+      </button>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="drawer" id="mobile-drawer" hidden>
+      <nav class="menu mobile" aria-label="Mobile">
+        <a href="#">About Product</a>
+        <a href="#">Features</a>
+        <a href="#">Benefits</a>
+        <a href="#">FAQ</a>
+        <a class="btn full" href="#">Get Quote</a>
+      </nav>
+    </div>
+  </div>
+
+<!-- 2nd  -->
+  <section class="hero">
+  <div class="hero__bg">
+    <svg class="hero__waves" viewBox="0 0 1440 600" aria-hidden="true">
+      <g fill="none" stroke="url(#waveStroke)" stroke-width="2">
+        <defs>
+          <linearGradient id="waveStroke" x1="0" x2="1" y1="0" y2="0">
+            <stop offset="0" stop-color="#9b5cff" stop-opacity=".15"/>
+            <stop offset="1" stop-color="#4f46e5" stop-opacity=".15"/>
+          </linearGradient>
+        </defs>
+        <path d="M-100,520 C200,400 400,400 720,520 S1240,640 1540,520"/>
+        <path d="M-100,470 C200,350 400,350 720,470 S1240,590 1540,470"/>
+        <path d="M-100,420 C200,300 400,300 720,420 S1240,540 1540,420"/>
+        <path d="M-100,370 C200,250 400,250 720,370 S1240,490 1540,370"/>
+        <path d="M-100,320 C200,200 400,200 720,320 S1240,440 1540,320"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero__inner">
+    <div class="hero__badge">
+      <span class="pill">New</span>
+      <a href="#" class="badge-link">Check out the new Resources</a>
+    </div>
+
+    <h1 class="hero__title">
+      Supercharge Your <span class="grad">Business</span> with <span class="grad">Smart AI</span>
+    </h1>
+
+    <p class="hero__subtitle">
+      Leverage AI automation to optimize WiFi captive portal management, enhance
+       user experience, ensure network security, and drive business growth.
+    </p>
+
+    <div class="hero__actions">
+      <a href="#" class="btn btn-primary">Get a Free  Quote <span aria-hidden="true">↗</span></a>
+      <a href="#" class="btn btn-ghost">Watch Demo</a>
+    </div>
+
+  <div class="hero__footer">
+    <div class="stats">
+      <div class="stat">
+        <div class="stat__value"
+            data-target="4.9"
+            data-decimals="1"
+            data-suffix="+">4.9+</div>
+        <div class="stat__label">Stars Rating</div>
+      </div>
+      <div class="stat">
+        <div class="stat__value"
+            data-target="100"
+            data-compact="true"
+            data-suffix="+">100+</div>
+        <div class="stat__label">Satisfied Customer</div>
+      </div>
+  </div>
+</div>  
+
+<aside class="promo">
+  <div class="promo__icon" aria-hidden="true">★</div>
+    <div class="promo__content">
+      <div class="promo__title">BEST AI Chatbot</div>
+        <p class="promo__text">Boost engagement, streamline support, and rapidly grow your business.</p>
+      </div>
+    </aside>
+  </div>
+  </div>
+</section>
+
+<!-- trusted section  -->
+
+<section class="trusted-section">
+  <h2 class="trusted-title">Trusted By</h2>
+  <div class="trusted-subtitle">
+    Trusted by Innovators Across Kerala
+  </div>
+  <div class="carousel-rows">
+  <div class="logo-carousel limited-width">
+  <div class="logo-track track-left">
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <!-- Duplicate for infinite loop -->
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+    <img src="assets/hdfc.png" alt="HDFC Bank" class="brand-logo" />
+  </div>
+</div>
+
+<div class="logo-carousel limited-width">
+  <div class="logo-track track-right">
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <!-- Duplicate for infinite loop -->
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+    <img src="assets/federal.png" alt="Federal Bank" class="brand-logo" />
+  </div>
+</div>
+  </div>
+</section>
+
+
+<!-- about section -->
+
+<section class="about-chatbot-section">
+  <div class="about-chatbot-wrap">
+    <div class="about-chatbot-image">
+      <img src="assets/about.png" alt="AI Chatbot Illustration">
+    </div>
+    <div class="about-chatbot-content">
+      <h2 class="about-chatbot-title">
+     
+         Meet the Chatbot That <br>
+        <span class="about-chatbot-gradient">Speaks Your Business</span>
+      </h2>
+      <p class="about-chatbot-desc">
+        Our AI-powered chatbot brings fast, precise support to your business, automating conversations and unlocking new opportunities for smarter, more efficient customer service. Experience seamless integration, intuitive interaction, and time-saving automation—all powered by world-class AI technology.
+      </p>
+      <a href="#learn-more" class="about-chatbot-btn">Learn More</a>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- -------features-------- -->
+<section id="features" class="ai-solutions-section">
+  <div class="ai-solutions-inner">
+    <h2 class="ai-solutions-title">  
+      Transform Customer Experience<br>
+      with Intelligent  <span class="ai-gradient">AI Chatbot Features</span>
+    </h2>
+    <p class="ai-solutions-desc">
+    Our AI chatbot empowers businesses to handle customer queries instantly automating responses, providing real-time insights, and enhancing engagement across marketing, sales, and operations.    </p>
+
+    <div class="ai-solutions-grid">
+      <div class="ai-solution-card">
+        <span class="ai-solution-icon">★</span>
+        <h3>Lorem Ipsum Dolor Sit Amet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="ai-solution-card">
+        <span class="ai-solution-icon">⏺️</span>
+        <h3>Lorem Ipsum Dolor Sit Amet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="ai-solution-card">
+        <span class="ai-solution-icon">🔎</span>
+        <h3>Lorem Ipsum Dolor Sit Amet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="ai-solution-card">
+        <span class="ai-solution-icon">⚙️</span>
+        <h3>Lorem Ipsum Dolor Sit Amet</h3>
+        <p>MLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="ai-solution-card">
+        <span class="ai-solution-icon">☰</span>
+        <h3>Lorem Ipsum Dolor Sit Amet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="ai-solution-card">
+        <span class="ai-solution-icon">🛡️</span>
+        <h3>Lorem Ipsum Dolor Sit Amet</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ---------------- use case -------------- -->
+<!-- <section class="howwework-section">
+  <div class="howwework-header">
+    <h2 class="howwework-title" >
+    <span class="howwework-highlight">Use Cases</span> – How Our Solution <br>Makes an Impact
+    </h2>
+    <div class="howwework-desc">
+      Our AI chatbot automates responses and boosts customer engagement.
+    </div>
+  </div>
+
+  <div class="how-section">
+    <div class="how-tabs">
+      <button class="how-tab active" data-tab="0">01</button>
+      <button class="how-tab" data-tab="1">02</button>
+      <button class="how-tab" data-tab="2">03</button>
+      <button class="how-tab" data-tab="3">04</button>
+      <div class="how-indicator"></div>
+    </div>
+    <div class="how-contentbox">
+      <div class="how-content active">
+        <h3>Gather Data</h3>
+        <p>We collaborate to identify relevant sources and gather high-quality data that fuels AI-driven insights for your business.</p>
+      </div>
+      <div class="how-content">
+        <h3>Predict Outcomes</h3>
+        <p>Advanced models turn your data into clear, actionable predictions so decisions are always one step ahead.</p>
+      </div>
+      <div class="how-content">
+        <h3>Build, Test & Launch</h3>
+        <p>We develop, rigorously test, and launch your solution for a seamless transition with minimal disruption.</p>
+      </div>
+      <div class="how-content">
+        <h3>Support & Scale</h3>
+        <p>After launch, we provide ongoing support, performance monitoring, and upgrades so your AI grows as your business does.</p>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ------------use case 2----------- -->
+<section class="usecase-section">
+  <div class="usecase-header">
+    <span class="usecase-badge">Use Cases</span>
+    <p class="usecase-desc">
+      Our AI chatbot automates responses and boosts customer engagement.
+    </p>
+  </div>
+
+  <div class="usecase-grid">
+    <!-- Step 1: Image left, content right -->
+    <div class="usecase-step-row">
+      <div class="usecase-card left">
+        <img src="assets/robo.jpg" class="usecase-img" alt="Connect Your Tools">
+      </div>
+      <div class="usecase-card right">
+        <span class="usecase-step">Step 1</span>
+        <h3 class="usecase-card-title">Connect Your Tools</h3>
+        <p class="usecase-card-desc">
+          Seamlessly bring in projects, campaigns, and data from every platform you use — all in just a few clicks.
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 2: Content left, image right -->
+    <div class="usecase-step-row">
+      <div class="usecase-card left">
+        <span class="usecase-step">Step 2</span>
+        <h3 class="usecase-card-title">Build Your Workflows</h3>
+        <p class="usecase-card-desc">
+          Create growth loops, automate task assignments, and set up detailed reporting dashboards that run themselves.
+        </p>
+      </div>
+      <div class="usecase-card right">
+        <img src="assets/robo.jpg" class="usecase-img" alt="Build Workflows">
+      </div>
+    </div>
+
+    <!-- Step 3: Image left, content right -->
+    <div class="usecase-step-row">
+      <div class="usecase-card left">
+        <img src="assets/robo.jpg" class="usecase-img" alt="Automate Support">
+      </div>
+      <div class="usecase-card right">
+        <span class="usecase-step">Step 3</span>
+        <h3 class="usecase-card-title">Automate Customer Support</h3>
+        <p class="usecase-card-desc">
+          Use the AI chatbot to instantly answer common queries, reduce response times, and support customers 24/7.
+        </p>
+      </div>
+    </div>
+
+    <!-- Step 4: Content left, image right -->
+    <div class="usecase-step-row">
+      <div class="usecase-card left">
+        <span class="usecase-step">Step 4</span>
+        <h3 class="usecase-card-title">Increase Sales Conversion</h3>
+        <p class="usecase-card-desc">
+          Guide leads through the funnel, recommend products, and close sales effortlessly through personalized conversations.
+        </p>
+      </div>
+      <div class="usecase-card right">
+        <img src="assets/robo.jpg" class="usecase-img" alt="Increase Sales">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+</body>
+</html>
