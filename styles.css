@@ -48,7 +48,7 @@ body{
 }
 .brand-name{ font-weight:700; color:var(--ink); letter-spacing:.2px }
 
-#lottie-icon{ width:50px; height:50px; display:inline-block }
+#lottie-icon{ width:120px; height:50px; display:inline-block; margin-left: 20px; }
 .brand-icon{ width:28px; height:28px; display:inline-block }
 
 /* ===== Menu ===== */
@@ -646,6 +646,9 @@ body{
 .usecase-step-row:last-child {
   margin-bottom: 0;
 }
+.usecase-card.left, .usecase-card.right {
+  padding: 0 20px;
+}
 .usecase-card.usecase-content {
   border-radius: 26px;
   padding: 40px 28px;
@@ -699,22 +702,79 @@ body{
   text-align: justify;
 }
 
-/* Responsive stacking: step, then image (for each card) */
-@media (max-width: 900px) {
-  .usecase-section { max-width: 98vw; padding: 38px 6px 34px; }
+/* Responsive styles for screens under 1200px */
+@media (max-width: 1200px) {
+
+  /* Overall section margin */
+  .usecase-section {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /* Stack image on top, text below */
   .usecase-step-row {
-    grid-template-columns: 1fr;
-    gap: 0;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  .usecase-card.left,
+  .usecase-card.right {
+    padding: 0;
+  }
+  /* Make image full width with side margins */
+  .usecase-card.usecase-image {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 16px;
+  }
+  .usecase-img {
+  max-width: 60%;         /* reduce width to 90% of container */
+  width: auto;            /* allow natural width scaling */
+  margin-left: auto;      /* center horizontally */
+  margin-right: auto;     /* center horizontally */
+  margin-bottom: 20px;
+  border-radius: 16px;
+  box-shadow: 0 2px 32px 0 rgba(0, 106, 255, 0.1);
+}
+
+  /* Text card full width with side margins */
+  .usecase-card.usecase-content {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+   .usecase-step-row:nth-child(even) {
+    flex-direction: column-reverse;
+  }
+}
+  
+/* Responsive stacking: step, then image (for smaller mobile) */
+@media (max-width: 900px) {
+  .usecase-section { max-width: 96%; padding: 38px 6px 34px; }
+  .usecase-step-row {
+    flex-direction: column;
   }
   .usecase-card.usecase-content,
   .usecase-card.usecase-image {
-    padding: 18px 5px;
+    padding: 18px 6px;
     border-radius: 18px;
     box-shadow: none;
   }
-  .usecase-card-title { font-size: 1.15rem; }
-  .usecase-img { max-width: 220px; }
+  .usecase-card-title {
+    font-size: 1.15rem;
+  }
+  .usecase-img {
+    max-width: 100%;
+    width: calc(100% - 12px);
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-bottom: 20px;
+  }
+   .usecase-step-row:nth-child(even) {
+    flex-direction: column-reverse;
+  }
 }
+
 
 /* ------------qa section --------------- */
 .faq-section {
@@ -732,6 +792,8 @@ body{
   border-radius: 16px;
   box-shadow: 0 4px 40px 0 rgba(37,99,235,0.08), 0 1.5px 8px 0 rgba(2,161,253,0.09);
   margin-bottom: 100px;
+
+  
 }
 
 .faq-left {
@@ -785,24 +847,26 @@ body{
 }
 
 .faq-item {
-  background: rgba(37,99,235,0.14); /* subtle blue glass */
+  background: rgba(255, 255, 255, 0.97); /* subtle blue glass */
   border-radius: 12px;
   box-shadow: 0 1px 8px 0 rgba(2,161,253,0.07);
-  border: 1px solid #eaf4ff;
+  border: 1px solid #007bff5b;
   padding: 0;
+  color: #000000;
   transition: box-shadow 0.14s, background 0.14s;
 }
 .faq-item.open,
 .faq-item:hover {
   box-shadow: 0 4px 18px 0 rgba(2,161,253,0.17);
-  background: linear-gradient(90deg, rgba(2,161,253,0.09) 0%, rgba(37,99,235,0.11) 100%);
+    border: 1px solid #007bff5b;
+  background:#ffffff;
 }
 .faq-question {
   width: 100%;
   background: none;
   border: none;
   outline: none;
-  color: #fff;
+  color: #000000;
   font-size: 1.11rem;
   font-weight: 700;
   padding: 24px 26px 16px 26px;
@@ -823,8 +887,9 @@ body{
 }
 .faq-answer {
   display: none;
-  color: var(--muted);
-  font-size: 1.04rem;
+  color: #6b7280;
+  font-size: 1rem;
+  font-weight: 200;
   padding: 0 26px 24px 26px;
   border-radius: 0 0 12px 12px;
 }
@@ -834,13 +899,15 @@ body{
 
 /* Responsive */
 @media (max-width:950px) {
-  .faq-section { flex-direction: column; gap: 34px; padding: 36px 12px; }
-  .faq-right { gap: 18px; }
+  .faq-section { flex-direction: column; gap: 34px; padding: 36px 12px;}
+  .faq-right { gap: 18px;  margin-left: 10px; margin-right: 10px; }
   .faq-title { font-size: 2.15rem; }
 }
 @media (max-width:600px) {
   .faq-title { font-size: 1.6rem; }
-  .faq-section { padding: 24px 6px; }
+  .faq-section { padding: 24px 6px;  }
+  .faq-left{ margin-bottom: 0px;}
+  .faq-right{ margin-top: 0px;}
   .faq-question,
   .faq-answer { padding-left: 14px; padding-right: 14px; }
 }
@@ -875,14 +942,11 @@ body{
   margin-bottom: 12px;
 }
 .footer-title {
-  font-size: 2rem;
-  font-weight: 800;
+  width: 220px;
+
   margin: 0 0 10px 0;
-  background: linear-gradient(90deg, #3bb6fd 0%, #2563eb 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+
+  
   letter-spacing: 1px;
 }
 .footer-brand p {
@@ -975,7 +1039,7 @@ body{
   .footer-main {
     flex-direction: column;
     align-items: flex-start;
-    gap: 26px;
+    gap: 22px;
     padding: 0 16px 62px 16px;
   }
   .footer-watermark {
@@ -989,11 +1053,17 @@ body{
   }
   .footer-meta {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     padding: 16px 16px;
-    font-size: 0.97rem;
+    font-size: 12px;
   }
+  .footer-title {
+  width: 160px;
+
+
+
+}
 }
 @media (max-width: 600px) {
   .footer-main {

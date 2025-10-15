@@ -18,13 +18,14 @@
   <div class="nav-wrap">
     <div class="navbar" id="navbar">
       <a class="brand" href="#">
-        <div id="lottie-icon" class="brand-icon" aria-hidden="true"></div>
-        <span class="brand-name">Tunning Spot</span>
+        <!-- <div id="lottie-icon" class="brand-icon" aria-hidden="true"></div> -->
+         <img id="lottie-icon" class="brand-icon" src="assets/tunningspot.svg" alt="Brand Icon" aria-hidden="true" />
+        <!-- <span class="brand-name">Tunning Spot</span> -->
       </a>
 
       <!-- Desktop menu -->
       <nav class="menu" aria-label="Primary">
-        <a href="#">About Product</a>
+        <a href="#about"> Product</a>
         <a href="#features">Features</a>
         <a href="#usecase">UseCase</a>
         <a href="#faq">FAQ</a>
@@ -47,17 +48,17 @@
     <!-- Mobile drawer -->
     <div class="drawer" id="mobile-drawer" hidden>
       <nav class="menu mobile" aria-label="Mobile">
-        <a href="#">About Product</a>
-        <a href="#">Features</a>
-        <a href="#">Benefits</a>
-        <a href="#">FAQ</a>
+        <a href="#about"> Product</a>
+        <a href="#features">Features</a>
+        <a href="#usecase">Benefits</a>
+        <a href="#faq">FAQ</a>
         <a class="btn full" href="#">Get Quote</a>
       </nav>
     </div>
   </div>
 
 <!-- 2nd  -->
-  <section class="hero">
+  <section class="hero" id="Home">
   <div class="hero__bg">
     <svg class="hero__waves" viewBox="0 0 1440 600" aria-hidden="true">
       <g fill="none" stroke="url(#waveStroke)" stroke-width="2">
@@ -183,7 +184,7 @@
 
 <!-- about section -->
 
-<section class="about-chatbot-section">
+<section class="about-chatbot-section" id="about">
   <div class="about-chatbot-wrap">
     <div class="about-chatbot-image">
       <img src="assets/uimodel.png" alt="AI Chatbot Illustration">
@@ -198,7 +199,7 @@
 Our AI-powered chatbot delivers fast, accurate, and personalized support, handling customer queries instantly across multiple channels. By automating conversations, it reduces manual work while managing routine interactions. It supports voice-to-text, live chat, image and PDF uploads with OCR, and quick replies, ensuring users get precise answers in real time.
 <br><br>
 The chatbot also enhances the customer experience by providing intuitive guidance and 24/7 support. Easily integrated into websites, apps, or internal platforms, it streamlines workflows, speeds up issue resolution, and improves engagement. With AI-driven insights and interactive features, it saves time, reduces operational costs, and builds trust through consistent, intelligent assistance.      </p>
-      <a href="#learn-more" class="about-chatbot-btn">Learn More</a>
+      <!-- <a href="#learn-more" class="about-chatbot-btn">Learn More</a> -->
     </div>
   </div>
 
@@ -218,33 +219,33 @@ The chatbot also enhances the customer experience by providing intuitive guidanc
 
     <div class="ai-solutions-grid">
       <div class="ai-solution-card">
-        <span class="ai-solution-icon">★</span>
+        <img src="assets/instant chat.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
         <h3>Instant Chat Responses</h3>
         <p>Provides quick, AI-powered responses to user queries, ensuring smooth, efficient, and uninterrupted conversation flow.</p>
       </div>
       <div class="ai-solution-card">
-        <span class="ai-solution-icon">⏺️</span>
+        <img src="assets/live-chat.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
         <h3>Live Chat (Speech-to-Speech) </h3>
         <p>Engage in real-time voice conversations with the chatbot, enabling smooth, human-like communication for faster query resolution.</p>
       </div>
       <div class="ai-solution-card">
-        <span class="ai-solution-icon">🔎</span>
+        <img src="assets/image-.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
         <h3>Image Upload </h3>
         <p>Users can upload images with text, and the chatbot intelligently extracts and interprets the content to provide meaningful, accurate responses.</p>
       </div>
        <div class="ai-solution-card">
-        <span class="ai-solution-icon">☰</span>
-        <h3>PDF Upload Support</h3>
+        <img src="assets/document.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
+        <h3>Document Upload </h3>
         <p>The chatbot reads and analyzes uploaded PDF documents using OCR, providing clear, summarized answers from complex files.</p>
       </div>
       <div class="ai-solution-card">
-        <span class="ai-solution-icon">⚙️</span>
+        <img src="assets/voice-chat.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
         <h3>Voice-to-Text</h3>
         <p>Convert spoken words into accurate text, letting users interact with the chatbot hands-free and communicate naturally.</p>
       </div>
      
       <div class="ai-solution-card">
-        <span class="ai-solution-icon">🛡️</span>
+        <img src="assets/quick-respond.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
         <h3>Quick Replies</h3>
         <p>Offers pre-set smart reply buttons for faster communication, helping users get instant answers with just one tap.</p>
       </div>
@@ -286,7 +287,9 @@ The chatbot also enhances the customer experience by providing intuitive guidanc
         <span class="usecase-step">Usecase 2</span>
         <h3 class="usecase-card-title">AI Chatbot for Public Service Websites</h3>
         <p class="usecase-card-desc">
-An AI chatbot for public-facing websites and applications enables users to access important information quickly and easily. Many public websites rely on uploaded documents, notifications, or circulars that can be difficult to navigate or extract details from. Our chatbot leverages OCR and natural language processing to accurately read and interpret text from such documents, providing users with clear, concise, and understandable responses. It can handle high volumes of queries simultaneously, guide users through procedures, and deliver information in a user-friendly manner. By making official information more accessible, the chatbot improves transparency, reduces confusion, and enhances engagement for citizens interacting with government, educational, or other public service platforms.
+An AI chatbot for public-facing websites and applications enables users to access important information quickly and easily. Many public websites rely on uploaded documents, notifications, or circulars that can be difficult to navigate or extract details from. 
+Our chatbot leverages OCR and natural language processing to accurately read and interpret text from such documents, providing users with clear, concise, and understandable responses.
+<br><br> It can handle high volumes of queries simultaneously, guide users through procedures, and deliver information in a user-friendly manner. By making official information more accessible, the chatbot improves transparency, reduces confusion, and enhances engagement for citizens interacting with government, educational, or other public service platforms.
         </p>
       </div>
       <div class="usecase-card right">
@@ -303,7 +306,8 @@ An AI chatbot for public-facing websites and applications enables users to acces
         <span class="usecase-step">Usecase 3</span>
         <h3 class="usecase-card-title">AI Chat Support for Business Applications</h3>
         <p class="usecase-card-desc">
-In modern business applications, having an intelligent chatbot integrated within both the admin and user interfaces can significantly improve efficiency and user experience. For new administrators or team members unfamiliar with the system, the chatbot can act as a virtual guide, assisting with navigation, explaining features, and providing step-by-step help for performing key tasks. For end users, it can offer instant support, answer queries, and clarify business-related information without the need for manual intervention. This dual-purpose functionality ensures smoother onboarding, faster task execution, and enhanced engagement, making the chatbot a valuable addition to any web or mobile application environment.
+In modern business applications, having an intelligent chatbot integrated within both the admin and user interfaces can significantly improve efficiency and user experience. For new administrators or team members unfamiliar with the system, the chatbot can act as a virtual guide, assisting with navigation, explaining features, and providing step-by-step help for performing key tasks. 
+<br><br>For end users, it can offer instant support, answer queries, and clarify business-related information without the need for manual intervention. This dual-purpose functionality ensures smoother onboarding, faster task execution, and enhanced engagement, making the chatbot a valuable addition to any web or mobile application environment.
         </p>
       </div>
     </div>
@@ -311,14 +315,16 @@ In modern business applications, having an intelligent chatbot integrated within
     <!-- Step 4: Content left, image right -->
     <div class="usecase-step-row">
       <div class="usecase-card left">
-        <span class="usecase-step">Step 4</span>
-        <h3 class="usecase-card-title">Increase Sales Conversion</h3>
+        <span class="usecase-step">Usecase 4</span>
+        <h3 class="usecase-card-title">AI Chatbot for Large-Scale Operations</h3>
         <p class="usecase-card-desc">
-          Guide leads through the funnel, recommend products, and close sales effortlessly through personalized conversations.
-        </p>
+An AI chatbot can support businesses with wide-reaching networks and multiple stakeholders by providing instant, accurate, and consistent information. It streamlines communication, automates routine queries, and delivers real-time guidance to employees, clients, or partners, ensuring smooth and efficient workflows across the organization.
+
+<br><br>By handling a high volume of interactions simultaneously, the chatbot reduces delays, minimizes human error, and ensures everyone has access to the information they need. Its ability to provide timely, user-friendly support makes it an invaluable tool for improving operational efficiency, enhancing collaboration, and maintaining seamless processes across complex business environments.
+</p>
       </div>
       <div class="usecase-card right">
-        <img src="assets/usecase3.png" class="usecase-img" alt="Increase Sales">
+        <img src="assets/usecase4.png" class="usecase-img" alt="Increase Sales">
       </div>
     </div>
   </div>
@@ -328,30 +334,31 @@ In modern business applications, having an intelligent chatbot integrated within
 
 <section class="faq-section" id="faq">
   <div class="faq-left">
-    <h2 class="faq-title">
+    <h2 class="faq-title" style=" margin-left: 10px; margin-right: 10px; ">
       Frequently<br><span>asked questions</span>
     </h2>
-    <p class="faq-desc">
-      Discover how leading businesses optimize performance, automate workflows, and achieve transformative growth with YourBrand.
+    <p class="faq-desc" style=" margin-left: 10px; margin-right: 10px; ">
+      See how YourBrand’s AI chatbot delivers instant support, automates responses, and boosts customer engagement.
     </p>
-    <a href="#" class="faq-btn">Get Started &#8594;</a>
+    <a href="#" class="faq-btn" style=" margin-left: 10px; margin-right: 10px; ">Get Started &#8594;</a>
   </div>
   <div class="faq-right">
+
     <div class="faq-item">
-      <button class="faq-question">How does YourBrand protect my data?<span class="faq-toggle">+</span></button>
-      <div class="faq-answer">YourBrand uses advanced security protocols and encryption to protect all user data.</div>
+      <button class="faq-question">What kind of queries can the AI chatbot handle?<span class="faq-toggle">+</span></button>
+      <div class="faq-answer">The chatbot can manage a wide range of queries, including account information, product details, support requests, and general business inquiries, providing instant, accurate responses.</div>
     </div>
-    <div class="faq-item open">
-      <button class="faq-question">Can I change my subscription plan at any time?<span class="faq-toggle">−</span></button>
-      <div class="faq-answer">Absolutely! You can upgrade or downgrade your plan directly from your dashboard. All adjustments are instant and prorated.</div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-question">Are custom integrations available?<span class="faq-toggle">+</span></button>
-      <div class="faq-answer">Yes, YourBrand offers flexible API access and custom integration support for enterprise customers.</div>
+    <div class="faq-item ">
+      <button class="faq-question">What kind of queries can the AI chatbot handle?<span class="faq-toggle">+</span></button>
+      <div class="faq-answer">Yes! The AI chatbot operates round-the-clock, ensuring customers get immediate assistance anytime, reducing wait times and improving satisfaction.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-question">What onboarding support does YourBrand provide?<span class="faq-toggle">+</span></button>
-      <div class="faq-answer">Our onboarding specialists and documentation ensure your team is productive from day one.</div>
+      <button class="faq-question">Does the chatbot support file uploads like images or PDFs?<span class="faq-toggle">+</span></button>
+      <div class="faq-answer">Absolutely. The chatbot can process images and PDF documents using OCR technology, extracting and delivering the required information in a clear, understandable format..</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question">Can the chatbot be integrated with our website or application?<span class="faq-toggle">+</span></button>
+      <div class="faq-answer">Yes! The AI chatbot operates round-the-clock, ensuring customers get immediate assistance anytime, reducing wait times and improving satisfaction..</div>
     </div>
   </div>
 </section>
@@ -362,46 +369,57 @@ In modern business applications, having an intelligent chatbot integrated within
 <footer class="footer-section">
   <div class="footer-main">
     <div class="footer-brand">
-      <img src="assets/your-logo.png" alt="YourLogo" class="footer-logo">
-      <h2 class="footer-title">Tunning Spot</h2>
+      <!-- <img src="assets/your-logo.png" alt="YourLogo" class="footer-logo"> -->
+      <!-- <h2 class="footer-title">Tunning Spot</h2> -->
+       <img class="footer-title" src="assets/tunningspot.svg" alt="Tunning Spot" />
       <p>
         Leverage next-gen AI to streamline operations and empower users with smarter, faster decisions.
       </p>
     </div>
     <div class="footer-nav">
       <div class="footer-col">
-        <h4>Solutions</h4>
+        <h4>Quick Links</h4>
         <ul>
-          <li><a href="#">Platform</a></li>
-          <li><a href="#">API</a></li>
+          <li><a href="#Home"> Home</a></li>
+          <li><a href="#about"> Product</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#usecase">UseCase</a></a></li>
+          <li><a href="#faq">FAQ</a></li>
+        
+        
+        
+
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
+        <h4>Try Our Chatbot</h4>
         <ul>
-          <li><a href="#">Docs</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="#">Watch Demo</a></li>
+          <li><a href="#">Get a Free quote</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Social</h4>
         <ul>
-          <li><a href="#">Twitter</a></li>
           <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Facebook</a></li>
+          
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="mailto:support@yourmail.com">support@yourmail.com</a></li>
-          <li><a href="tel:+911234567890">+91-1234567890</a></li>
+          <li><a href="mailto:support@yourmail.com">sales@amyntortech.com</a></li>
+          <li><a href="mailto:support@yourmail.com">techsupport@tunningspot.com</a></li>
+          <li><a href="tel:+911234567890">+91 79949 99096</a></li>
         </ul>
       </div>
     </div>
   </div>
-  <div class="footer-watermark">Tunning Spot</div>
+  <!-- <div class="footer-watermark">Tunning Spot</div> -->
   <div class="footer-meta">
-    <span>&copy;2025 YourBrand. All Rights Reserved.</span>
+    <span>&copy;All rights reserved by © Amyntor Tech Solutions 2025</span>
     
   </div>
 </footer>
