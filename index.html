@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script src="script.js" defer></script>
 
 </head>
@@ -385,7 +387,40 @@ An AI chatbot can support businesses with wide-reaching networks and multiple st
 
 <!-- --------------------- contact ----------- -->
 
-<section class="contact-section"  id="contact">
+
+
+<!-- <section class="contact-section" id="contact">
+  <div class="contact-info glass">
+    <p class="contact-label">CONTACT US</p>
+    <h1>Get in touch <br>we’re here to help.</h1>
+    <p class="contact-desc">Our AI chatbot is ready to assist, but you can also reach out to us directly.</p>
+    <div class="avatar-row">
+
+    </div>
+  </div>
+
+  <form class="contact-form glass" id="contactForm" autocomplete="on" method="POST">
+    <input type="text" placeholder="Your Name" name="name" required>
+    <input type="tel" placeholder="Phone" name="phone" required>
+    <input type="email" placeholder="Email" name="email" required>
+    <input type="text" placeholder="Subject" name="subject">
+    <textarea name="message" placeholder="Message" required></textarea>
+
+    <div class="captcha-row">
+      <span id="captchaText"></span>
+      <img src="assets/refresh (1).png" alt="Refresh Captcha" class="captcha-refresh" title="Refresh captcha" />
+      <input type="text" id="captchaInput" placeholder="Type captcha" name="captcha" required>
+    </div>
+
+    <input type="hidden" name="_captcha" value="false" />
+
+    <button type="submit">Submit</button>
+    <div id="formStatus" style="margin-top:10px; color: green; font-weight: 600;"></div>
+  </form>
+</section> -->
+
+
+<section class="contact-section" id="contact">
   <div class="contact-info glass">
     <p class="contact-label">CONTACT US</p>
     <h1>Get in touch <br>we’re here to help.</h1>
@@ -395,31 +430,23 @@ An AI chatbot can support businesses with wide-reaching networks and multiple st
     </div>
   </div>
 
-  <form class="contact-form glass" id="contactForm" autocomplete="on">
+  <form class="contact-form glass" id="contactForm" autocomplete="on" method="POST">
     <input type="text" placeholder="Your Name" name="name" required>
-
-<input type="tel" placeholder="Phone" name="phone" required>
-
-
+    <input type="tel" placeholder="Phone" name="phone" required>
     <input type="email" placeholder="Email" name="email" required>
-
-    <input type="text" placeholder="Subject " name="subject">
-
+    <input type="text" placeholder="Subject" name="subject">
     <textarea name="message" placeholder="Message" required></textarea>
 
-        <div class="captcha-row">
-      <span id="captchaText"></span>
-      <img src="assets/refresh (1).png" alt="Refresh Captcha" class="captcha-refresh" title="Refresh captcha" />
-      <input type="text" id="captchaInput" placeholder="Type captcha" required>
-    </div>
+    <!-- Google reCAPTCHA widget -->
+    <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+
+    <!-- Disable old FormSubmit CAPTCHA -->
+    <input type="hidden" name="_captcha" value="false" />
 
     <button type="submit">Submit</button>
-    <div id="formStatus"></div>
+    <div id="formStatus" style="margin-top:10px; color: green; font-weight: 600;"></div>
   </form>
 </section>
-
-
-
 
 
 <!-- ----------------- footer ---------- -->
