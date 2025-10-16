@@ -214,7 +214,7 @@ if (form) {
     // Append recaptcha response to form data
     formData.append('g-recaptcha-response', recaptchaResponse);
 
-    const url = 'https://formsubmit.co/ajax/akshayp9396@gmail.com';
+    const url = 'https://formsubmit.co/ajax/sales@amyntortech.com';
 
     fetch(url, {
       method: 'POST',
