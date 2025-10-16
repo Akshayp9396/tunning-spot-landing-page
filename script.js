@@ -147,3 +147,44 @@ document.querySelectorAll('.faq-question').forEach(function(btn) {
     }
   });
 });
+
+
+// Function to generate and display the CAPTCHA text
+function generateCaptcha(length = 6) {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz23456789';
+  let code = '';
+  for (let i = 0; i < length; i++) {
+    code += chars[Math.floor(Math.random() * chars.length)];
+  }
+  document.getElementById('captchaText').textContent = code;
+  return code;
+}
+
+let currentCaptcha;
+
+// Generate new captcha on page load
+window.onload = function() {
+  currentCaptcha = generateCaptcha();
+
+  // Refresh on clicking refresh button
+  const refreshButton = document.querySelector('.captcha-refresh');
+  refreshButton.onclick = function() {
+    currentCaptcha = generateCaptcha();
+    document.getElementById('captchaInput').value = "";
+  };
+
+  // Form submission
+  const form = document.getElementById('contactForm');
+  form.onsubmit = function(event) {
+    const userInput = document.getElementById('captchaInput').value.trim();
+    const captcha = document.getElementById('captchaText').textContent;
+
+    // Case-sensitive validation
+    if (userInput !== captcha) {
+      alert("Invalid captcha. Please try again.");
+      currentCaptcha = generateCaptcha();
+      document.getElementById('captchaInput').value = "";
+      event.preventDefault();
+    }
+  };
+};
