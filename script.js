@@ -194,8 +194,80 @@ document.addEventListener('DOMContentLoaded', () => {
   //     });
   //   });
   // }
+//  fadein animation trusted section 
+
+ const elements = document.querySelectorAll('.fade-in');
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+        entry.target.classList.add('animated');
+        // If you want to animate only once:
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.90 }); // Trigger when 10% of element is visible
+
+  elements.forEach(el => {
+    // Trigger animation on load
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+
+  // --------about-----------------
+ const about = document.querySelector('.about-chatbot-section.reveal');
+  if (!about) return;
+
+  // show immediately if already in view, else observe
+  const show = () => about.classList.add('show');
+
+  const rect = about.getBoundingClientRect();
+  const inView = rect.top < window.innerHeight && rect.bottom > 0;
+  if (inView) {
+    show();
+  } else {
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(({ isIntersecting, target }) => {
+        if (isIntersecting) {
+          target.classList.add('show');
+          obs.unobserve(target);
+        }
+      });
+    }, { threshold: 0.15 });
+    io.observe(about);
+  }
 
 
+
+
+ // Mark hero "in" to start the directional entrances
+  const hero = document.querySelector('.hero');
+  if (hero) {
+
+    requestAnimationFrame(() => hero.classList.add('is-in'));
+
+    // Soft parallax on waves for depth (safe + performant)
+    const waves = hero.querySelector('.hero__waves');
+    if (waves) {
+      let ticking = false;
+      const onScroll = () => {
+        if (!ticking) {
+          requestAnimationFrame(() => {
+            const y = Math.min(window.scrollY * 0.12, 36);
+            waves.style.transform = `translateX(-50%) translateY(${y}px)`;
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    }
+  }
+
+
+// -------------------------
   const form = document.getElementById('contactForm');
 const formStatus = document.getElementById('formStatus');
 

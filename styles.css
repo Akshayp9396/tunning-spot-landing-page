@@ -285,12 +285,18 @@ body {
   max-width: 18ch;
 }
 .grad {
+  
   background-image: linear-gradient(90deg, #2563eb, #02a1fd, #2563eb);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
+
 }
+
+
+
+
 .hero__subtitle {
   max-width: 70ch;
   margin: 0 auto 28px;
@@ -424,6 +430,109 @@ body {
   }
 }
 
+/* hero animation */
+.hero .anim-left,
+.hero .anim-right,
+.hero .anim-up,
+.hero .anim-down,
+.hero .anim-pop {
+  opacity: 0;
+  will-change: transform, opacity;
+  transform: translateZ(0); /* GPU hint */
+  transition: transform .7s cubic-bezier(.22,.61,.36,1), opacity .7s ease;
+  transition-delay: var(--d, 0ms);
+}
+
+/* Offsets for each direction */
+.hero .anim-left  { transform: translateX(-26px); }
+.hero .anim-right { transform: translateX( 26px); }
+.hero .anim-up    { transform: translateY( 24px); }
+.hero .anim-down  { transform: translateY(-24px); }
+.hero .anim-pop   { transform: scale(.985); filter: saturate(.96); }
+
+/* Activated state (JS adds .is-in on hero) */
+.hero.is-in .anim-left,
+.hero.is-in .anim-right,
+.hero.is-in .anim-up,
+.hero.is-in .anim-down,
+.hero.is-in .anim-pop {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* Title layout: allow mixed spans on multiple lines nicely */
+.hero .hero__title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .3ch .5ch;
+  justify-content: center;
+}
+@media (max-width: 720px) {
+  .hero .hero__title { gap: .2ch .4ch; }
+}
+
+/* Gradient shimmer (subtle, premium) */
+.grad-shimmer {
+  position: relative;
+  background-image: linear-gradient(90deg, #2563eb, #02a1fd, #2563eb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  overflow: hidden;
+}
+.grad-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 0%, rgba(255,255,255,.35) 45%, transparent 60%);
+  transform: translateX(-120%);
+  animation: heroShimmer 3s ease-in-out .9s infinite;
+  pointer-events: none;
+}
+@keyframes heroShimmer {
+  0%   { transform: translateX(-120%); }
+  55%  { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+
+
+
+/* Promo: gentle float after it arrives (layered with entrance) */
+@keyframes floatY {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+.hero.is-in .promo.anim-right {
+  animation: floatY 7.2s 1.4s ease-in-out infinite;
+}
+
+/* Button hover refinement (keeps your existing styles) */
+.hero__actions .btn {
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.18);
+}
+.hero__actions .btn:hover {
+  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.28);
+}
+
+/* Respect user preference */
+@media (prefers-reduced-motion: reduce) {
+  .hero .anim-left,
+  .hero .anim-right,
+  .hero .anim-up,
+  .hero .anim-down,
+  .hero .anim-pop {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .grad-shimmer::after { display: none !important; }
+  .waves-lines path { animation: none !important; }
+  .hero .promo { animation: none !important; }
+}
+
+
 /*--------------- trusted section -------------------------- */
 
 .trusted-section {
@@ -554,6 +663,54 @@ body {
   }
 }
 
+@media (max-width: 889px) and (min-width: 480px) {
+  .carousel-rows {
+    gap: 14px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo-carousel.limited-width {
+    max-width: 98vw;
+    border-radius: 9px;
+  }
+  .logo-track {
+    gap: 18px;
+  }
+  .brand-logo {
+    height: 18px;
+    margin: 0 4px;
+  }
+  .trusted-title {
+    font-size: 1.1rem;
+  }
+}
+
+
+/* Basic fade in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply fade-in for items you want to animate */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
+  animation-play-state: paused; /* start paused */
+}
+
+.fade-in.animated {
+  animation-play-state: running;
+}
+
+
 /*---------------------------- about section---------------------- */
 
 .about-chatbot-section {
@@ -666,6 +823,96 @@ body {
     margin-right: 10px;
   }
 }
+
+@media (max-width: 889px) and (min-width: 480px) {
+  .about-chatbot-wrap {
+    flex-direction: column;
+    gap: 26px;
+    align-items: center;
+    width: 98vw;
+    max-width: 98vw;
+  }
+  .about-chatbot-content {
+    text-align: center;
+  }
+  .about-chatbot-title {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+  }
+  .about-chatbot-desc {
+    font-size: 0.99rem;
+    margin-bottom: 24px;
+    text-align: justify;
+    margin-left: 1px;
+    margin-right: 10px;
+    line-height: 1.45;
+  }
+  .about-chatbot-image img {
+    max-width: 200px;
+  }
+}
+
+/* === About section: animation) === */
+
+.about-chatbot-section.reveal .from-left,
+.about-chatbot-section.reveal .from-right,
+.about-chatbot-section.reveal .from-right [data-stagger] {
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.about-chatbot-section.reveal .from-left {
+  transform: translateX(-28px);
+}
+
+.about-chatbot-section.reveal .from-right {
+  transform: translateX(28px);
+}
+
+
+.about-chatbot-section.reveal.show .from-left,
+.about-chatbot-section.reveal.show .from-right {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform .6s ease, opacity .6s ease;
+}
+
+
+.about-chatbot-section.reveal.show .from-right [data-stagger] {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform .6s ease, opacity .6s ease;
+  transition-delay: calc(var(--stagger, 0) * 1ms);
+}
+.about-chatbot-section.reveal .from-right [data-stagger="2"] { transform: translateX(18px); }
+.about-chatbot-section.reveal .from-right [data-stagger="3"] { transform: translateX(22px); }
+.about-chatbot-section.reveal .from-right [data-stagger="4"] { transform: translateX(26px); }
+
+
+@keyframes floatY {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+.about-chatbot-section.reveal.show .about-chatbot-image img {
+  animation: floatY 6s ease-in-out .6s infinite;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .about-chatbot-section.reveal .from-left,
+  .about-chatbot-section.reveal .from-right,
+  .about-chatbot-section.reveal .from-right [data-stagger] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .about-chatbot-section.reveal.show .about-chatbot-image img {
+    animation: none !important;
+  }
+}
+
+
 
 /*---------------------------- features---------------------- */
 .ai-solutions-section {
@@ -796,6 +1043,14 @@ body {
     margin-right: 10px;
   }
 }
+
+/* Features: animation */
+.ai-solution-card.fade-in {
+  animation-delay: calc(var(--fade, 0) * 1ms);
+}
+.ai-solution-card.fade-in[data-fade="1"] { --fade: 60; }
+.ai-solution-card.fade-in[data-fade="2"] { --fade: 120; }
+.ai-solution-card.fade-in[data-fade="3"] { --fade: 180; }
 
 /*------------ use case ---------- */
 .usecase-section {
@@ -968,6 +1223,21 @@ body {
   }
 }
 
+/* Usecase: fade-in stagger like Features */
+.usecase-header .fade-in,
+.usecase-card.fade-in {
+  animation-delay: calc(var(--fade, 0) * 1ms);
+}
+
+/* simple stagger mapping */
+.usecase-header .fade-in[data-fade="1"],
+.usecase-card.fade-in[data-fade="1"] { --fade: 60; }
+
+.usecase-header .fade-in[data-fade="2"],
+.usecase-card.fade-in[data-fade="2"] { --fade: 140; }
+
+.usecase-card.fade-in[data-fade="3"] { --fade: 220; }
+
 /* ------------qa section --------------- */
 .faq-section {
   display: flex;
@@ -1122,6 +1392,53 @@ body {
   }
 }
 
+
+/* FAQ: fade-in stagger like Features */
+.faq-left .fade-in,
+.faq-item.fade-in {
+  animation-delay: calc(var(--fade, 0) * 1ms);
+}
+
+.faq-left .fade-in[data-fade="1"],
+.faq-item.fade-in[data-fade="1"] { --fade: 60; }
+
+.faq-left .fade-in[data-fade="2"],
+.faq-item.fade-in[data-fade="2"] { --fade: 120; }
+
+.faq-left .fade-in[data-fade="3"],
+.faq-item.fade-in[data-fade="3"] { --fade: 180; }
+
+
+.faq-right .faq-answer {
+  display: block;             
+  max-height: 0;              
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height .35s ease, opacity .25s ease;
+}
+
+.faq-right .faq-item.open .faq-answer {
+  max-height: 600px;         
+  opacity: 1;
+}
+
+
+.faq-toggle {
+  transition: transform .25s ease;
+  display: inline-block;
+}
+.faq-item.open .faq-toggle {
+  transform: rotate(45deg); 
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-left .fade-in,
+  .faq-item.fade-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .faq-right .faq-answer { transition: none !important; }
+}
+
+
 /* ----------------- contact ----------- */
 
 .contact-section {
@@ -1242,7 +1559,7 @@ body {
 .contact-form button {
   width: 100%;
   padding: 16px 0;
-  background: linear-gradient(90deg, #325adf, #5cc6ff 80%);
+ background: linear-gradient(90deg, #2563eb, #02a1fd, #2563eb);
   color: #fff;
   font-size: 1.18rem;
   border: none;
@@ -1311,6 +1628,29 @@ body {
     padding: 28px 4vw;
   }
 }
+
+/* Contact: fade-in stagger like other sections */
+.contact-section .fade-in {
+  animation-delay: calc(var(--fade, 0) * 1ms);
+  animation-duration: 0.8s; /* a touch snappier for form fields */
+}
+
+/* map data-fade numeric directly to --fade via inline; nothing else needed */
+
+/* optional: slightly larger lift for the two cards on first reveal */
+.contact-info.glass.fade-in,
+.contact-form.glass .fade-in:first-child {
+  transform: translateY(22px);
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .contact-section .fade-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+
+
+
 /* <!-- ----------------- footer ---------- --> */
 
 .footer-section {

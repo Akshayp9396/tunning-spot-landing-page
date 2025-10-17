@@ -63,7 +63,7 @@
   <section class="hero" id="Home">
   <div class="hero__bg">
     <svg class="hero__waves" viewBox="0 0 1440 600" aria-hidden="true">
-      <g fill="none" stroke="url(#waveStroke)" stroke-width="2">
+      <g class="waves-lines" fill="none" stroke="url(#waveStroke)" stroke-width="2">
         <defs>
           <linearGradient id="waveStroke" x1="0" x2="1" y1="0" y2="0">
             <stop offset="0" stop-color="#9b5cff" stop-opacity=".15"/>
@@ -80,58 +80,51 @@
   </div>
 
   <div class="hero__inner">
+    <!-- badge -->
     <div class="hero__badge">
-      <span class="pill">New</span>
-      <a href="#" class="badge-link">Check out the new Resources</a>
+      <span class="pill anim-up" style="--d:80ms;">New</span>
+      <a href="#" class="badge-link anim-up" style="--d:160ms;">Check out the new Resources</a>
     </div>
 
+    <!-- title -->
     <h1 class="hero__title">
-      Supercharge Your <span class="grad">Business</span> with <span class="grad">Smart AI</span>
+      <span class="anim-left" style="--d:220ms;">Supercharge Your</span>
+      <span class="grad grad-shimmer anim-right" style="--d:320ms;">Business</span>
+      <span class="anim-up" style="--d:420ms;">with</span>
+      <span class="grad grad-shimmer anim-down" id="animate-smartai" style="--d:520ms;">Smart AI</span>
     </h1>
 
-    <p class="hero__subtitle">
+    <!-- subtitle -->
+    <p class="hero__subtitle anim-up" style="--d:620ms;">
       Leverage AI automation to power your chatbot, delivering instant support, enhancing user experience, providing accurate answers,
-       and driving business growth.
+      and driving business growth.
     </p>
 
+    <!-- ctas -->
     <div class="hero__actions">
-      <a href="#contact" class="btn btn-primary">Get a Free  Quote <span aria-hidden="true">↗</span></a>
-      <a href="https://www.tunningspot.com/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Watch Demo</a>
+      <a href="#contact" class="btn btn-primary anim-left" style="--d:720ms;">Get a Free Quote <span aria-hidden="true">↗</span></a>
+      <a href="https://www.tunningspot.com/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost anim-right" style="--d:780ms;">Watch Demo</a>
     </div>
 
-  <div class="hero__footer">
-    <div class="stats">
-      <!-- <div class="stat">
-        <div class="stat__value"
-            data-target="4.9"
-            data-decimals="1"
-            data-suffix="+">4.9+</div>
-        <div class="stat__label">Stars Rating</div>
-      </div> -->
-      <!-- <div class="stat">
-        <div class="stat__value"
-            data-target="100"
-            data-compact="true"
-            data-suffix="+">100+</div>
-        <div class="stat__label">Satisfied Customer</div>
-      </div> -->
-  </div>
-</div>  
+    <!-- footer / promo -->
+    <div class="hero__footer anim-pop" style="--d:840ms;">
+      <div class="stats"><!-- (your stats can live here) --></div>
+    </div>
 
-<aside class="promo">
-  <div class="promo__icon" aria-hidden="true">★</div>
-    <div class="promo__content">
-      <div class="promo__title">BEST AI CHATBOT</div>
+    <aside class="promo anim-right" style="--d:920ms;">
+      <div class="promo__icon" aria-hidden="true">★</div>
+      <div class="promo__content">
+        <div class="promo__title">BEST AI CHATBOT</div>
         <p class="promo__text">Enhance engagement, automate support, and grow your business with our AI chatbot.</p>
       </div>
     </aside>
   </div>
-  </div>
 </section>
+
 
 <!-- trusted section  -->
 
-<section class="trusted-section">
+<section class="trusted-section fade-in">
   <h2 class="trusted-title">Trusted By</h2>
   <div class="trusted-subtitle">
     Trusted by Innovators Across Kerala
@@ -186,81 +179,79 @@
 
 <!-- about section -->
 
-<section class="about-chatbot-section" id="about">
+<section class="about-chatbot-section reveal" id="about">
   <div class="about-chatbot-wrap">
-    <div class="about-chatbot-image">
-      <img src="assets/uimodel.png" alt="AI Chatbot Illustration">
+    <div class="about-chatbot-image from-left" data-stagger="1">
+      <img src="assets/about.png" alt="AI Chatbot Illustration">
     </div>
-    <div class="about-chatbot-content">
-      <h2 class="about-chatbot-title">
-     
-         Meet the Chatbot That <br>
+    <div class="about-chatbot-content from-right">
+      <h2 class="about-chatbot-title" data-stagger="2">
+        Meet the Chatbot That <br>
         <span class="about-chatbot-gradient">Speaks Your Business</span>
       </h2>
-      <p class="about-chatbot-desc">
-          Your Autonomous AI Agent for Customer Interaction and Workflow Automation
-          <br>
-          <br>
-          Stop just answering questions. start solving problems. Our platform transforms customer support and internal operations with an AI agent that understands context, reasons intelligently, 
-          and takes meaningful action. It’s designed to automate complex workflows, enhance efficiency, and deliver smarter customer engagement. With multi-modal understanding, the AI can interpret
-          text, voice, and even scanned documents using advanced RAG and OCR technologies. It connects seamlessly with your business tools through powerful n8n integrations to automate lead capture, 
-          streamline support, enable self-service, and enhance team collaboration ,all while ensuring accuracy and real-time responsiveness.
-          <br><br>
-
-          More than a chatbot, this is your AI-powered workforce. Easily integrate it into any website, application, or internal system to reduce operational costs, provide exceptional 24/7 support, and build a smarter, 
-          more connected business ecosystem.
-
-          </p>
-      <!-- <a href="#learn-more" class="about-chatbot-btn">Learn More</a> -->
+      <p class="about-chatbot-desc" data-stagger="3">
+        Your Autonomous AI Agent for Customer Interaction and Workflow Automation
+        <br><br>
+        Stop just answering questions. start solving problems. Our platform transforms customer support and internal operations with an AI agent that understands context, reasons intelligently, 
+        and takes meaningful action. It’s designed to automate complex workflows, enhance efficiency, and deliver smarter customer engagement. With multi-modal understanding, the AI can interpret
+        text, voice, and even scanned documents using advanced RAG and OCR technologies. It connects seamlessly with your business tools through powerful n8n integrations to automate lead capture, 
+        streamline support, enable self-service, and enhance team collaboration ,all while ensuring accuracy and real-time responsiveness.
+        <br><br>
+        More than a chatbot, this is your AI-powered workforce. Easily integrate it into any website, application, or internal system to reduce operational costs, provide exceptional 24/7 support, and build a smarter, 
+        more connected business ecosystem.
+      </p>
+      <!-- <a href="#learn-more" class="about-chatbot-btn" data-stagger="4">Learn More</a> -->
     </div>
   </div>
-
 </section>
-
 
 <!-- -------features-------- -->
 <section id="features" class="ai-solutions-section">
-  <div class="ai-solutions-inner">
-    <h2 class="ai-solutions-title">  
+  <div class="ai-solutions-inner" >
+    <h2 class="ai-solutions-title fade-in">  
       Transform Customer Experience<br>
       with Intelligent  <span class="ai-gradient">AI Chatbot Features</span>
     </h2>
 
-    <p class="ai-solutions-desc">
-    Our AI chatbot empowers businesses to handle customer queries instantly, automate responses, deliver real-time insights, and boost engagement across marketing, sales, and operations."   </p>
+    <p class="ai-solutions-desc fade-in">
+      Our AI chatbot empowers businesses to handle customer queries instantly, automate responses, deliver real-time insights, and boost engagement across marketing, sales, and operations."
+    </p>
 
     <div class="ai-solutions-grid">
-      <div class="ai-solution-card">
+      <div class="ai-solution-card fade-in" data-fade="1">
         <img src="assets/instant chat.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
         <h3>Intelligent Chat Responses</h3>
-        <p>Delivers fast, AI-powered responses using a hybrid semantic and keyword search, ensuring accurate context and smooth, uninterrupted conversations.
-</p>
+        <p>Delivers fast, AI-powered responses using a hybrid semantic and keyword search, ensuring accurate context and smooth, uninterrupted conversations.</p>
       </div>
-      <div class="ai-solution-card">
+
+      <div class="ai-solution-card fade-in" data-fade="2">
         <img src="assets/live-chat.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
-        <h3>Live Chat (Speech-to-Speech) </h3>
+        <h3>Live Chat (Speech-to-Speech)</h3>
         <p>Engage in real-time voice conversations with the chatbot, enabling smooth, human-like communication for faster query resolution.</p>
       </div>
-      <div class="ai-solution-card">
+
+      <div class="ai-solution-card fade-in" data-fade="3">
         <img src="assets/album.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
-        <h3>Multi-Format Document Upload </h3>
+        <h3>Multi-Format Document Upload</h3>
         <p>Users can upload scanned documents, PDFs, or images, and our multi-stage OCR engine extracts and structures the text, giving the chatbot the context to answer complex questions accurately.</p>
       </div>
-       <div class="ai-solution-card">
+
+      <div class="ai-solution-card fade-in" data-fade="1">
         <img src="assets/knowledge.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
-        <h3>Dynamic Knowledge Base </h3>
+        <h3>Dynamic Knowledge Base</h3>
         <p>The chatbot’s knowledge stays up-to-date, automatically detecting changes in your knowledge base and updating in near real-time to provide accurate, current answers.</p>
       </div>
-      <div class="ai-solution-card">
+
+      <div class="ai-solution-card fade-in" data-fade="2">
         <img src="assets/voice-chat.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
         <h3>Voice-to-Text</h3>
         <p>Convert spoken words into accurate text, letting users interact with the chatbot hands-free and communicate naturally.</p>
       </div>
-     
-      <div class="ai-solution-card">
+
+      <div class="ai-solution-card fade-in" data-fade="3">
         <img src="assets/automation.png" alt="star icon" style="width:60px; height:60px; vertical-align: middle;">
         <h3>Agentic Workflow Automation</h3>
-        <p>Our chatbot goes beyond answers, triggering n8n workflows to create tickets, schedule demos, and manage tasks turning conversations into actions.</p>
+        <p>Our chatbot goes beyond answers, triggering n8n workflows to create tickets, schedule demos, and manage tasks—turning conversations into actions.</p>
       </div>
     </div>
   </div>
@@ -269,74 +260,72 @@
 
 
 <!-- ------------use case 2----------- -->
-<section class="usecase-section"  id="usecase">
+<section class="usecase-section" id="usecase">
   <div class="usecase-header">
-    <span class="usecase-badge">Use Cases</span>
-    <p class="usecase-desc">
+    <span class="usecase-badge fade-in" data-fade="1">Use Cases</span>
+    <p class="usecase-desc fade-in" data-fade="2">
       Our AI chatbot automates responses and boosts customer engagement.
     </p>
   </div>
 
   <div class="usecase-grid">
-    <!-- Step 1: Image left, content right -->
+    <!-- Row 1 -->
     <div class="usecase-step-row">
-      <div class="usecase-card left">
+      <div class="usecase-card left fade-in" data-fade="1">
         <img src="assets/bank.jpg" class="usecase-img" alt="bank chatbot">
       </div>
-      <div class="usecase-card right">
+      <div class="usecase-card right fade-in" data-fade="2">
         <span class="usecase-step">UseCase 1</span>
         <h3 class="usecase-card-title">AI Chatbot for Banking Assistance</h3>
         <p class="usecase-card-desc">
-         An AI chatbot for the banking sector provides instant, accurate, and personalized support to customers, handling queries related to accounts, transactions, cards, loans, and other banking services. It offers 24/7 assistance, managing multiple inquiries simultaneously, reducing customer wait times, ensuring consistent information, freeing staff for complex tasks, and lowering operational costs.
-         <br><br>By delivering clear, user-friendly guidance for routine account management, fund transfers, and understanding banking policies, it enhances customer satisfaction and builds trust. Its ability to provide quick and accessible support makes it an essential tool for improving efficiency and streamlining banking services for both local and international customers.
-        
+          An AI chatbot for the banking sector provides instant, accurate, and personalized support to customers, handling queries related to accounts, transactions, cards, loans, and other banking services. It offers 24/7 assistance, managing multiple inquiries simultaneously, reducing customer wait times, ensuring consistent information, freeing staff for complex tasks, and lowering operational costs.
+          <br><br>By delivering clear, user-friendly guidance for routine account management, fund transfers, and understanding banking policies, it enhances customer satisfaction and builds trust. Its ability to provide quick and accessible support makes it an essential tool for improving efficiency and streamlining banking services for both local and international customers.
         </p>
       </div>
     </div>
 
-    <!-- Step 2: Content left, image right -->
+    <!-- Row 2 -->
     <div class="usecase-step-row">
-      <div class="usecase-card left">
+      <div class="usecase-card left fade-in" data-fade="1">
         <span class="usecase-step">Usecase 2</span>
         <h3 class="usecase-card-title">AI Chatbot for Public Service Websites</h3>
         <p class="usecase-card-desc">
-An AI chatbot for public-facing websites and applications enables users to access important information quickly and easily. Many public websites rely on uploaded documents, notifications, or circulars that can be difficult to navigate or extract details from. 
-Our chatbot leverages OCR and natural language processing to accurately read and interpret text from such documents, providing users with clear, concise, and understandable responses.
-<br><br> It can handle high volumes of queries simultaneously, guide users through procedures, and deliver information in a user-friendly manner. By making official information more accessible, the chatbot improves transparency, reduces confusion, and enhances engagement for citizens interacting with government, educational, or other public service platforms.
+          An AI chatbot for public-facing websites and applications enables users to access important information quickly and easily. Many public websites rely on uploaded documents, notifications, or circulars that can be difficult to navigate or extract details from. 
+          Our chatbot leverages OCR and natural language processing to accurately read and interpret text from such documents, providing users with clear, concise, and understandable responses.
+          <br><br> It can handle high volumes of queries simultaneously, guide users through procedures, and deliver information in a user-friendly manner. By making official information more accessible, the chatbot improves transparency, reduces confusion, and enhances engagement for citizens interacting with government, educational, or other public service platforms.
         </p>
       </div>
-      <div class="usecase-card right">
+      <div class="usecase-card right fade-in" data-fade="2">
         <img src="assets/usecase2.png" class="usecase-img" alt="public sector chatbot">  
       </div>
     </div>
 
-    <!-- Step 3: Image left, content right -->
+    <!-- Row 3 -->
     <div class="usecase-step-row">
-      <div class="usecase-card left">
+      <div class="usecase-card left fade-in" data-fade="1">
         <img src="assets/usecase3.png" class="usecase-img" alt="business chatbot">
       </div>
-      <div class="usecase-card right">
+      <div class="usecase-card right fade-in" data-fade="2">
         <span class="usecase-step">Usecase 3</span>
         <h3 class="usecase-card-title">AI Chat Support for Business Applications</h3>
         <p class="usecase-card-desc">
-In modern business applications, having an intelligent chatbot integrated within both the admin and user interfaces can significantly improve efficiency and user experience. For new administrators or team members unfamiliar with the system, the chatbot can act as a virtual guide, assisting with navigation, explaining features, and providing step-by-step help for performing key tasks. 
-<br><br>For end users, it can offer instant support, answer queries, and clarify business-related information without the need for manual intervention. This dual-purpose functionality ensures smoother onboarding, faster task execution, and enhanced engagement, making the chatbot a valuable addition to any web or mobile application environment.
+          In modern business applications, having an intelligent chatbot integrated within both the admin and user interfaces can significantly improve efficiency and user experience. For new administrators or team members unfamiliar with the system, the chatbot can act as a virtual guide, assisting with navigation, explaining features, and providing step-by-step help for performing key tasks. 
+          <br><br>For end users, it can offer instant support, answer queries, and clarify business-related information without the need for manual intervention. This dual-purpose functionality ensures smoother onboarding, faster task execution, and enhanced engagement, making the chatbot a valuable addition to any web or mobile application environment.
         </p>
       </div>
     </div>
 
-    <!-- Step 4: Content left, image right -->
+    <!-- Row 4 -->
     <div class="usecase-step-row">
-      <div class="usecase-card left">
+      <div class="usecase-card left fade-in" data-fade="1">
         <span class="usecase-step">Usecase 4</span>
         <h3 class="usecase-card-title">AI Chatbot for Large-Scale Operations</h3>
         <p class="usecase-card-desc">
-An AI chatbot can support businesses with wide-reaching networks and multiple stakeholders by providing instant, accurate, and consistent information. It streamlines communication, automates routine queries, and delivers real-time guidance to employees, clients, or partners, ensuring smooth and efficient workflows across the organization.
-
-<br><br>By handling a high volume of interactions simultaneously, the chatbot reduces delays, minimizes human error, and ensures everyone has access to the information they need. Its ability to provide timely, user-friendly support makes it an invaluable tool for improving operational efficiency, enhancing collaboration, and maintaining seamless processes across complex business environments.
-</p>
+          An AI chatbot can support businesses with wide-reaching networks and multiple stakeholders by providing instant, accurate, and consistent information. It streamlines communication, automates routine queries, and delivers real-time guidance to employees, clients, or partners, ensuring smooth and efficient workflows across the organization.
+          <br><br>By handling a high volume of interactions simultaneously, the chatbot reduces delays, minimizes human error, and ensures everyone has access to the information they need. Its ability to provide timely, user-friendly support makes it an invaluable tool for improving operational efficiency, enhancing collaboration, and maintaining seamless processes across complex business environments.
+        </p>
       </div>
-      <div class="usecase-card right">
+      <div class="usecase-card right fade-in" data-fade="2">
         <img src="assets/usecase4.png" class="usecase-img" alt="Increase Sales">
       </div>
     </div>
@@ -347,106 +336,80 @@ An AI chatbot can support businesses with wide-reaching networks and multiple st
 
 <section class="faq-section" id="faq">
   <div class="faq-left">
-    <h2 class="faq-title" style=" margin-left: 10px; margin-right: 10px; ">
+    <h2 class="faq-title fade-in" data-fade="1" style="margin-left:10px; margin-right:10px;">
       Frequently<br><span>asked questions</span>
     </h2>
-    <p class="faq-desc" style=" margin-left: 10px; margin-right: 10px; ">
+    <p class="faq-desc fade-in" data-fade="2" style="margin-left:10px; margin-right:10px;">
       See how YourBrand’s AI chatbot delivers instant support, automates responses, and boosts customer engagement.
     </p>
-    <a href="#contact" class="faq-btn" style=" margin-left: 10px; margin-right: 10px; ">Get Started &#8594;</a>
+    <a href="#contact" class="faq-btn fade-in" data-fade="3" style="margin-left:10px; margin-right:10px;">Get Started &#8594;</a>
   </div>
-  <div class="faq-right">
 
-    <div class="faq-item">
+  <div class="faq-right">
+    <div class="faq-item fade-in" data-fade="1">
       <button class="faq-question">What kind of queries can the AI chatbot handle?<span class="faq-toggle">+</span></button>
       <div class="faq-answer">The chatbot can manage a wide range of queries from multiple sources. It can answer questions about product details, support requests, and business inquiries using its knowledge base. More powerfully, it can also process and answer specific questions about the content of documents, PDFs (including scanned copies), and images that you upload during the conversation.</div>
     </div>
-    <div class="faq-item ">
+
+    <div class="faq-item fade-in" data-fade="2">
       <button class="faq-question">Is the chatbot available 24/7?<span class="faq-toggle">+</span></button>
       <div class="faq-answer">Yes! The AI chatbot operates round-the-clock, ensuring your customers and users get immediate assistance anytime. This eliminates wait times and improves satisfaction.</div>
     </div>
-    <div class="faq-item">
+
+    <div class="faq-item fade-in" data-fade="3">
       <button class="faq-question">Does the chatbot support file uploads like images or PDFs?<span class="faq-toggle">+</span></button>
       <div class="faq-answer">Absolutely. Our chatbot is equipped with a powerful, multi-stage OCR engine. It can process and analyze various documents, including digital PDFs, scanned documents, and even images containing text. It intelligently extracts the information to provide clear, accurate answers based on the content you provide.</div>
     </div>
-    <div class="faq-item">
+
+    <div class="faq-item fade-in" data-fade="1">
       <button class="faq-question">Can the chatbot be integrated with our website or application?<span class="faq-toggle">+</span></button>
       <div class="faq-answer">Yes, the chatbot is designed for easy integration. It can be embedded into your websites, mobile applications, or internal platforms like Slack or Microsoft Teams. Our flexible API ensures a seamless connection to your existing digital ecosystem.</div>
     </div>
-    <div class="faq-item">
+
+    <div class="faq-item fade-in" data-fade="2">
       <button class="faq-question">What do you mean by an "agentic system"? Can it do more than just chat?<span class="faq-toggle">+</span></button>
-      <div class="faq-answer">Yes, "agentic" means our chatbot can do more than just talk—it can take action. After understanding a user's request, it can independently decide to trigger automated tasks. This transforms it from a simple Q&A bot into an active participant in your business processes.
-</div>
+      <div class="faq-answer">Yes, "agentic" means our chatbot can do more than just talk—it can take action. After understanding a user's request, it can independently decide to trigger automated tasks. This transforms it from a simple Q&A bot into an active participant in your business processes.</div>
     </div>
-    <div class="faq-item">
+
+    <div class="faq-item fade-in" data-fade="3">
       <button class="faq-question">What kinds of tasks can the chatbot automate?<span class="faq-toggle">+</span></button>
       <div class="faq-answer">Through its integration with automation platforms like n8n, the chatbot can perform a wide variety of tasks. For example, after a conversation, it can automatically create a support ticket in your helpdesk, add a new lead to your CRM, schedule a meeting on a calendar, or even send a summary email to your team. It connects conversation to action.</div>
     </div>
   </div>
 </section>
-
 <!-- --------------------- contact ----------- -->
 
 
 
-<!-- <section class="contact-section" id="contact">
-  <div class="contact-info glass">
-    <p class="contact-label">CONTACT US</p>
-    <h1>Get in touch <br>we’re here to help.</h1>
-    <p class="contact-desc">Our AI chatbot is ready to assist, but you can also reach out to us directly.</p>
-    <div class="avatar-row">
-
-    </div>
-  </div>
-
-  <form class="contact-form glass" id="contactForm" autocomplete="on" method="POST">
-    <input type="text" placeholder="Your Name" name="name" required>
-    <input type="tel" placeholder="Phone" name="phone" required>
-    <input type="email" placeholder="Email" name="email" required>
-    <input type="text" placeholder="Subject" name="subject">
-    <textarea name="message" placeholder="Message" required></textarea>
-
-    <div class="captcha-row">
-      <span id="captchaText"></span>
-      <img src="assets/refresh (1).png" alt="Refresh Captcha" class="captcha-refresh" title="Refresh captcha" />
-      <input type="text" id="captchaInput" placeholder="Type captcha" name="captcha" required>
-    </div>
-
-    <input type="hidden" name="_captcha" value="false" />
-
-    <button type="submit">Submit</button>
-    <div id="formStatus" style="margin-top:10px; color: green; font-weight: 600;"></div>
-  </form>
-</section> -->
-
 
 <section class="contact-section" id="contact">
-  <div class="contact-info glass">
+  <div class="contact-info glass fade-in" data-fade="40">
     <p class="contact-label">CONTACT US</p>
-    <h1>Get in touch <br>we’re here to help.</h1>
-    <p class="contact-desc">Our AI chatbot is ready to assist, but you can also reach out to us directly.</p>
-    <div class="avatar-row">
+    <h1 class="fade-in" data-fade="80">Get in touch <br>we’re here to help.</h1>
+    <p class="contact-desc fade-in" data-fade="120">Our AI chatbot is ready to assist, but you can also reach out to us directly.</p>
+    <div class="avatar-row fade-in" data-fade="160">
       <!-- Avatar or emoji can go here -->
     </div>
   </div>
 
-  <form class="contact-form glass" id="contactForm" autocomplete="on" method="POST">
-    <input type="text" placeholder="Your Name" name="name" required>
-    <input type="tel" placeholder="Phone" name="phone" required>
-    <input type="email" placeholder="Email" name="email" required>
-    <input type="text" placeholder="Subject" name="subject">
-    <textarea name="message" placeholder="Message" required></textarea>
+  <form class="contact-form glass">
+    <input class="fade-in" data-fade="60" type="text" placeholder="Your Name" name="name" required>
+    <input class="fade-in" data-fade="100" type="tel" placeholder="Phone" name="phone" required>
+    <input class="fade-in" data-fade="140" type="email" placeholder="Email" name="email" required>
+    <input class="fade-in" data-fade="180" type="text" placeholder="Subject" name="subject">
+    <textarea class="fade-in" data-fade="220" name="message" placeholder="Message" required></textarea>
 
     <!-- Google reCAPTCHA widget -->
-    <div class="g-recaptcha" data-sitekey="6LcJcuwrAAAAAHx1dFXDhtBfvvycDyqSofLRb1yM"></div>
+    <div class="g-recaptcha fade-in" data-fade="260" data-sitekey="6LcJcuwrAAAAAHx1dFXDhtBfvvycDyqSofLRb1yM"></div>
 
     <!-- Disable old FormSubmit CAPTCHA -->
     <input type="hidden" name="_captcha" value="false" />
 
-    <button type="submit">Submit</button>
-    <div id="formStatus" style="margin-top:10px; color: green; font-weight: 600;"></div>
+    <button class="fade-in" data-fade="300" type="submit">Submit</button>
+    <div id="formStatus" class="fade-in" data-fade="340" style="margin-top:10px; color: green; font-weight: 600;"></div>
   </form>
 </section>
+
 
 
 <!-- ----------------- footer ---------- -->
@@ -479,7 +442,7 @@ An AI chatbot can support businesses with wide-reaching networks and multiple st
         <h4>Try Our Chatbot</h4>
         <ul>
           <li><a href="https://www.tunningspot.com/" target="_blank" rel="noopener noreferrer">Watch Demo</a></li>
-          <li><a href="#">Get a Free quote</a></li>
+          <li><a href="#contact">Get a Free quote</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -494,7 +457,7 @@ An AI chatbot can support businesses with wide-reaching networks and multiple st
       <div class="footer-col">
         <h4>Contact</h4>
         <ul>
-          <li><a href="mailto:support@yourmail.com"> sales@amyntortech.com</a></li>
+          <li><a href="mailto:sales@amyntortech.com"> sales@amyntortech.com</a></li>
           
           <li><a href="tel:+911234567890"> +91 9778 609 245 </a></li>
           <li><a href="tel:+911234567890">  +91 9037 931 606</a></li>
