@@ -268,14 +268,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // -------------------------
- const form = document.getElementById('contactForm');
+  const form = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
 
   if (form) {
     form.addEventListener('submit', function(event) {
       event.preventDefault();
 
-      // Validate all required fields are filled
       const nameField = form.querySelector('input[name="name"]');
       const phoneField = form.querySelector('input[name="phone"]');
       const emailField = form.querySelector('input[name="email"]');
@@ -293,9 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
         phoneField.focus();
         return;
       }
-      // Validate phone number length and digits only
-      const phoneValue = phoneField.value.trim();
-      if (!/^\d{10}$/.test(phoneValue)) {
+
+      const phoneValue = phoneField.value.replace(/\D/g, '');
+      if (phoneValue.length !== 10) {
         alert('Please enter a valid 10-digit phone number.');
         phoneField.focus();
         return;
@@ -306,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         emailField.focus();
         return;
       }
-      // Basic email format validation
+
       const emailValue = emailField.value.trim();
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(emailValue)) {
@@ -327,7 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Verify Google reCAPTCHA response
       const recaptchaResponse = grecaptcha.getResponse();
       if (recaptchaResponse.length === 0) {
         alert('Please complete the reCAPTCHA.');
@@ -335,7 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const formData = new FormData(form);
-      // Append recaptcha response to form data
       formData.append('g-recaptcha-response', recaptchaResponse);
 
       const url = 'https://formsubmit.co/ajax/sales@amyntortech.com';
@@ -350,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
           formStatus.style.color = 'green';
           formStatus.innerHTML = '&#10003; Form submitted successfully!';
           form.reset();
-          grecaptcha.reset(); // Reset reCAPTCHA widget
+          grecaptcha.reset();
         } else {
           formStatus.style.color = 'red';
           formStatus.textContent = 'Submission failed. Please try again.';
@@ -363,4 +360,5 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
 });
