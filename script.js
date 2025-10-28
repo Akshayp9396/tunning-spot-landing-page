@@ -268,49 +268,99 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // -------------------------
-  const form = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
+ const form = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
 
-if (form) {
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
 
-    // Verify Google reCAPTCHA response
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (recaptchaResponse.length === 0) {
-      alert('Please complete the reCAPTCHA.');
-      return;
-    }
+      // Validate all required fields are filled
+      const nameField = form.querySelector('input[name="name"]');
+      const phoneField = form.querySelector('input[name="phone"]');
+      const emailField = form.querySelector('input[name="email"]');
+      const subjectField = form.querySelector('input[name="subject"]');
+      const messageField = form.querySelector('textarea[name="message"]');
 
-    const formData = new FormData(form);
-    // Append recaptcha response to form data
-    formData.append('g-recaptcha-response', recaptchaResponse);
-
-    const url = 'https://formsubmit.co/ajax/sales@amyntortech.com';
-
-    fetch(url, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    })
-    .then(response => {
-      if (response.ok) {
-        formStatus.style.color = 'green';
-        formStatus.innerHTML = '&#10003; Form submitted successfully!';
-        form.reset();
-        grecaptcha.reset(); // reset reCAPTCHA widget
-      } else {
-        formStatus.style.color = 'red';
-        formStatus.textContent = 'Submission failed. Please try again.';
+      if (!nameField.value.trim()) {
+        alert('Please enter your name.');
+        nameField.focus();
+        return;
       }
-    })
-    .catch(error => {
-      formStatus.style.color = 'red';
-      formStatus.textContent = 'An error occurred. Try again later.';
-      console.error('Error:', error);
+
+      if (!phoneField.value.trim()) {
+        alert('Please enter your phone number.');
+        phoneField.focus();
+        return;
+      }
+      // Validate phone number length and digits only
+      const phoneValue = phoneField.value.trim();
+      if (!/^\d{10}$/.test(phoneValue)) {
+        alert('Please enter a valid 10-digit phone number.');
+        phoneField.focus();
+        return;
+      }
+
+      if (!emailField.value.trim()) {
+        alert('Please enter your email.');
+        emailField.focus();
+        return;
+      }
+      // Basic email format validation
+      const emailValue = emailField.value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(emailValue)) {
+        alert('Please enter a valid email address.');
+        emailField.focus();
+        return;
+      }
+
+      if (!subjectField.value.trim()) {
+        alert('Please enter the subject.');
+        subjectField.focus();
+        return;
+      }
+
+      if (!messageField.value.trim()) {
+        alert('Please enter the message.');
+        messageField.focus();
+        return;
+      }
+
+      // Verify Google reCAPTCHA response
+      const recaptchaResponse = grecaptcha.getResponse();
+      if (recaptchaResponse.length === 0) {
+        alert('Please complete the reCAPTCHA.');
+        return;
+      }
+
+      const formData = new FormData(form);
+      // Append recaptcha response to form data
+      formData.append('g-recaptcha-response', recaptchaResponse);
+
+      const url = 'https://formsubmit.co/ajax/sales@amyntortech.com';
+
+      fetch(url, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if (response.ok) {
+          formStatus.style.color = 'green';
+          formStatus.innerHTML = '&#10003; Form submitted successfully!';
+          form.reset();
+          grecaptcha.reset(); // Reset reCAPTCHA widget
+        } else {
+          formStatus.style.color = 'red';
+          formStatus.textContent = 'Submission failed. Please try again.';
+        }
+      })
+      .catch(error => {
+        formStatus.style.color = 'red';
+        formStatus.textContent = 'An error occurred. Try again later.';
+        console.error('Error:', error);
+      });
     });
-  });
-}
-
+  }
 });
-
