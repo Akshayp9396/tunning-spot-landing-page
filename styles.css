@@ -14,6 +14,7 @@
 html,
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 body {
   font-family: Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
@@ -21,6 +22,7 @@ body {
   background: radial-gradient(1200px 60% at 50% -10%, rgba(2, 161, 253, 0.18), transparent 60%),
     linear-gradient(180deg, #ffffff 0%, #eaf4ff 100%);
   isolation: isolate;
+  overflow-x: hidden;
 }
 
 /* ===== Layout wrapper (centers the pill navbar) ===== */
@@ -1646,6 +1648,70 @@ body {
 /* reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .contact-section .fade-in { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* -----captcha  */
+/* Make CAPTCHA container flexible for responsiveness */
+.captcha-row {
+  flex-wrap: wrap; /* allow wrapping on smaller screens */
+  align-items: center; /* vertically align items */
+  display: flex;
+  gap: 12px;
+}
+
+/* Make the canvas responsive, max width 100%, auto height, initial width */
+#captchaCanvas {
+max-width: 160px; /* limit max width */
+  width: 100%;      /* fit container's width */
+  height: 40px;     /* reduce height */
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0,0,0,0.1);
+  object-fit: contain; /* keep aspect ratio if canvas is resized */
+}
+
+/* Style the input to occupy remaining space and be responsive */
+#captchaInput {
+  flex: 1 1 auto;
+  min-width: 150px; /* prevent it from shrinking too small */
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(25, 94, 174, 0.3);
+  width: 100%; /* to fill the container width */
+  box-sizing: border-box; /* include padding & border in width */
+}
+
+/* On very small screens, reduce font size of the input and canvas if necessary */
+@media (max-width: 600px) {
+  #captchaCanvas {
+    font-size: 0.85rem;
+  }
+  #captchaInput {
+    font-size: 0.9rem;
+    padding: 8px;
+  }
+}
+
+/* New fix for very small screens <=419px */
+@media (max-width: 419px) {
+  .captcha-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  #captchaCanvas {
+    width: 100% !important;
+    height: auto !important;
+    max-width: auto;
+    margin: 0 auto;
+    border-radius: 8px;
+  }
+  #captchaInput {
+    min-width: initial; /* allow full width */
+    width: 90%;
+    font-size: 1rem;
+    padding: 10px;
+  }
 }
 
 

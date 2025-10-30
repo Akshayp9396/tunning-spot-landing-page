@@ -268,96 +268,118 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // -------------------------
-const form = document.getElementById('contactForm');
-const formStatus = document.getElementById('formStatus');
+// const form = document.getElementById('contactForm');
+// const formStatus = document.getElementById('formStatus');
+// const captchaCanvas = document.getElementById('captchaCanvas');
+// const captchaInput = document.getElementById('captchaInput');
+// const serverCaptchaInput = document.getElementById('serverCaptcha');
+// let captchaText = serverCaptchaInput ? serverCaptchaInput.value : '';
 
-if (form) {
-  form.addEventListener('submit', function(event) {
-    event.preventDefault();
+// function generateCaptcha() {
+//   if (!captchaCanvas) return;
+//   const ctx = captchaCanvas.getContext('2d');
+//   if (!ctx) return;
+//   ctx.clearRect(0, 0, captchaCanvas.width, captchaCanvas.height);
+//   ctx.font = '30px Arial';
+//   ctx.fillText(captchaText, 20, 35);
+// }
 
-    const nameField = form.querySelector('input[name="name"]');
-    const phoneField = form.querySelector('input[name="phone"]');
-    const emailField = form.querySelector('input[name="email"]');
-    const subjectField = form.querySelector('input[name="subject"]');
-    const messageField = form.querySelector('textarea[name="message"]');
+// window.onload = generateCaptcha;
 
-    if (!nameField.value.trim()) {
-      alert('Please enter your name.');
-      nameField.focus();
-      return;
-    }
+// if (form) {
+//   form.addEventListener('submit', function(event) {
+//     event.preventDefault();
 
-    if (!phoneField.value.trim()) {
-      alert('Please enter your phone number.');
-      phoneField.focus();
-      return;
-    }
+//     var nameField = form.querySelector('input[name="name"]');
+//     var phoneField = form.querySelector('input[name="phone"]');
+//     var emailField = form.querySelector('input[name="email"]');
+//     var subjectField = form.querySelector('input[name="subject"]');
+//     var messageField = form.querySelector('textarea[name="message"]');
 
-    const phoneValue = phoneField.value.replace(/\D/g, '');
-    if (phoneValue.length !== 10) {
-      alert('Please enter a valid 10-digit phone number.');
-      phoneField.focus();
-      return;
-    }
+//     if (!nameField.value.trim()) {
+//       alert('Please enter your name.');
+//       nameField.focus();
+//       return;
+//     }
 
-    if (!emailField.value.trim()) {
-      alert('Please enter your email.');
-      emailField.focus();
-      return;
-    }
+//     if (!phoneField.value.trim()) {
+//       alert('Please enter your phone number.');
+//       phoneField.focus();
+//       return;
+//     }
 
-    const emailValue = emailField.value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(emailValue)) {
-      alert('Please enter a valid email address.');
-      emailField.focus();
-      return;
-    }
+//     var phoneValue = phoneField.value.replace(/\D/g, '');
+//     if (phoneValue.length !== 10) {
+//       alert('Please enter a valid 10-digit phone number.');
+//       phoneField.focus();
+//       return;
+//     }
 
-    if (!subjectField.value.trim()) {
-      alert('Please enter the subject.');
-      subjectField.focus();
-      return;
-    }
+//     if (!emailField.value.trim()) {
+//       alert('Please enter your email.');
+//       emailField.focus();
+//       return;
+//     }
 
-    if (!messageField.value.trim()) {
-      alert('Please enter the message.');
-      messageField.focus();
-      return;
-    }
+//     var emailValue = emailField.value.trim();
+//     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//     if (!emailRegex.test(emailValue)) {
+//       alert('Please enter a valid email address.');
+//       emailField.focus();
+//       return;
+//     }
 
-    const recaptchaResponse = grecaptcha.getResponse();
-    if (recaptchaResponse.length === 0) {
-      alert('Please complete the reCAPTCHA.');
-      return;
-    }
+//     if (!subjectField.value.trim()) {
+//       alert('Please enter the subject.');
+//       subjectField.focus();
+//       return;
+//     }
 
-    const formData = new FormData(form);
-    formData.append('g-recaptcha-response', recaptchaResponse);
+//     if (!messageField.value.trim()) {
+//       alert('Please enter the message.');
+//       messageField.focus();
+//       return;
+//     }
 
-    fetch('email-submit-form.php', {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    })
-      .then(response => response.json())
-      .then(data => {
-        if (data.status === 'success') {
-          formStatus.style.color = 'green';
-          formStatus.innerHTML = '&#10003; Form submitted successfully!';
-          form.reset();
-          grecaptcha.reset();
-        } else {
-          formStatus.style.color = 'red';
-          formStatus.textContent = data.message || 'Submission failed. Please try again.';
-        }
-      })
-      .catch(error => {
-        formStatus.style.color = 'red';
-        formStatus.textContent = 'An error occurred. Try again later.';
-        console.error('Error:', error);
-      });
-  });
-}
+//     if (!captchaInput.value.trim()) {
+//       alert("Please enter the CAPTCHA.");
+//       captchaInput.focus();
+//       return;
+//     }
+
+//     if (captchaInput.value.trim().toLowerCase() !== captchaText.toLowerCase()) {
+//       alert("Entered CAPTCHA doesn't match. Please try again.");
+//       captchaInput.focus();
+//       return;
+//     }
+
+//     var formData = new FormData(form);
+
+//     fetch('email-submit-form.php', {
+//       method: 'POST',
+//       body: formData,
+//       headers: { 'Accept': 'application/json' }
+//     })
+//       .then(function(response) { return response.json(); })
+//       .then(function(data) {
+//         if (data.status === 'success') {
+//           formStatus.style.color = 'green';
+//           formStatus.innerHTML = '&#10003; Form submitted successfully!';
+//           form.reset();
+//           location.reload();
+//         } else {
+//           formStatus.style.color = 'red';
+//           formStatus.textContent = data.message || 'Submission failed. Please try again.';
+//         }
+//       })
+//       .catch(function(error) {
+//         formStatus.style.color = 'red';
+//         formStatus.textContent = 'An error occurred. Try again later.';
+//         console.error('Error:', error);
+//       });
+//   });
+// }
+
+
 
 });

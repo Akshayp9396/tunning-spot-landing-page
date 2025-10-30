@@ -1,9 +1,24 @@
+<?php
+session_start();
+// Generate CAPTCHA only once per page load - store in session
+$chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+$captcha_text = '';
+for ($i = 0; $i < 6; $i++) {
+    $captcha_text .= $chars[random_int(0, strlen($chars) - 1)];
+}
+$_SESSION['captcha_text'] = $captcha_text;
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tunning Spot</title>
+  <link rel="icon" type="image/png" href="assets/fav.png">
+
+  <title>AI chatbot  </title>
+   
 
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,7 +26,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer> </script>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <!-- NEW: expose server-side CAPTCHA text to JS for canvas rendering -->
+  <script>
+    window.SERVER_CAPTCHA = "<?php echo htmlspecialchars($captcha_text, ENT_QUOTES, 'UTF-8'); ?>";
+  </script>
+
   <script src="script.js" defer></script>
 
 </head>
@@ -54,7 +74,7 @@
         <a href="#features">Features</a>
         <a href="#usecase">Benefits</a>
         <a href="#faq">FAQ</a>
-        <a class="btn full" href="#">Get Quote</a>
+        <a class="btn full" href="#contact">Get Quote</a>
       </nav>
     </div>
   </div>
@@ -119,6 +139,8 @@
       </div>
     </aside>
   </div>
+
+ 
 </section>
 
 
@@ -381,6 +403,7 @@
 
 <!-- --------------------- contact ----------- -->
 
+
 <section class="contact-section" id="contact">
   <div class="contact-info glass fade-in" data-fade="40">
     <p class="contact-label">CONTACT US</p>
@@ -393,16 +416,34 @@
 
   <form id="contactForm" class="contact-form glass" method="POST" action="email-submit-form.php">
     <input class="fade-in" data-fade="60" type="text" placeholder="Your Name" name="name" required>
-    <input class="fade-in" data-fade="100" type="tel" placeholder="Phone" name="phone" required>
+    <input
+    class="fade-in"
+    data-fade="100"
+    type="tel"
+    id="phone"
+    name="phone"
+    placeholder="Phone (10 digits)"
+    inputmode="numeric"
+    pattern="\d{10}"
+    minlength="10"
+    maxlength="10"
+    required
+    title="Please enter a valid 10-digit phone number"
+    style="flex: 1; padding: 8px; border: 1px solid #4A6CF7; border-radius: 6px;"
+  />
     <input class="fade-in" data-fade="140" type="email" placeholder="Email" name="email" required>
     <input class="fade-in" data-fade="180" type="text" placeholder="Subject" name="subject" required>
     <textarea class="fade-in" data-fade="220" name="message" placeholder="Message" required></textarea>
+    
 
-    <!-- Google reCAPTCHA widget -->
-    <div class="g-recaptcha fade-in" data-fade="260" data-sitekey="6LcJcuwrAAAAAHx1dFXDhtBfvvycDyqSofLRb1yM"></div>
+    <!-- Manual CAPTCHA -->
+    <div class="fade-in" data-fade="260" style="display:flex; flex-direction: row; align-items: center;">
+      <canvas id="captchaCanvas" width="200" height="50" style="border: 1px solid #4A6CF7; margin-right: 15px;"></canvas>
+      <input type="text" placeholder="Enter CAPTCHA" id="captchaInput" class="input-field" name="captcha" required />
+    </div>
 
-    <!-- Disable old FormSubmit CAPTCHA -->
-    <input type="hidden" name="_captcha" value="false" />
+    <!-- Pass PHP-generated CAPTCHA text to JS via hidden input (kept) -->
+    <input type="hidden" id="serverCaptcha" value="<?php echo htmlspecialchars($captcha_text); ?>">
 
     <button class="fade-in" data-fade="300" type="submit">Submit</button>
     <div id="formStatus" class="fade-in" data-fade="340" style="margin-top:10px; color: green; font-weight: 600;"></div>
@@ -432,10 +473,6 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#usecase">UseCase</a></a></li>
           <li><a href="#faq">FAQ</a></li>
-        
-        
-        
-
         </ul>
       </div>
       <div class="footer-col">
@@ -458,7 +495,6 @@
         <h4>Contact</h4>
         <ul>
           <li><a href="mailto:sales@amyntortech.com"> sales@amyntortech.com</a></li>
-          
           <li><a href="tel:+911234567890"> +91 9778 609 245 </a></li>
           <li><a href="tel:+911234567890">  +91 9037 931 606</a></li>
         </ul>
@@ -468,15 +504,117 @@
   <!-- <div class="footer-watermark">Tunning Spot</div> -->
   <div class="footer-meta">
     <span>&copy;2025 Amyntor Tech Solutions . All rights reserved</span>
-    
   </div>
 </footer>
 
 
+<!-- NEW: tiny inline script to draw the CAPTCHA onto the canvas -->
+<script>
+(() => {
+  const canvas = document.getElementById('captchaCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
 
+  // Prefer window.SERVER_CAPTCHA set in <head>, fallback to hidden input
+  const hidden = document.getElementById('serverCaptcha');
+  const text = (typeof window.SERVER_CAPTCHA === 'string' && window.SERVER_CAPTCHA)
+    ? window.SERVER_CAPTCHA
+    : (hidden ? hidden.value : '');
 
+  function rand(min, max) { return Math.random() * (max - min) + min; }
 
+  function drawBackground() {
+    const g = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    g.addColorStop(0, '#eef3ff');
+    g.addColorStop(1, '#dce7ff');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+    // light noise lines
+    for (let i = 0; i < 5; i++) {
+      ctx.strokeStyle = `rgba(0,0,0,${(Math.random()*0.08+0.05).toFixed(2)})`;
+      ctx.lineWidth = Math.random() * 1.2 + 0.4;
+      ctx.beginPath();
+      ctx.moveTo(rand(0, canvas.width), rand(0, canvas.height));
+      ctx.bezierCurveTo(rand(0, canvas.width), rand(0, canvas.height),
+                        rand(0, canvas.width), rand(0, canvas.height),
+                        rand(0, canvas.width), rand(0, canvas.height));
+      ctx.stroke();
+    }
+    // dots
+    for (let i = 0; i < 80; i++) {
+      ctx.fillStyle = `rgba(0,0,0,${(Math.random()*0.06+0.03).toFixed(2)})`;
+      ctx.beginPath();
+      ctx.arc(rand(0, canvas.width), rand(0, canvas.height), rand(0.4, 1.2), 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function drawText(t) {
+    const chars = (t || '######').split('');
+    const baseX = 12;
+    const stepX = Math.max(22, (canvas.width - 24) / Math.max(chars.length, 1));
+    chars.forEach((ch, i) => {
+      const fontSize = rand(20, 26);
+      ctx.save();
+      ctx.translate(baseX + i * stepX, rand(30, 40));
+      ctx.rotate(rand(-0.25, 0.25));
+      ctx.font = `${fontSize}px Inter, ui-sans-serif, Arial`;
+      ctx.fillStyle = '#1f2937';
+      ctx.shadowColor = 'rgba(0,0,0,0.15)';
+      ctx.shadowBlur = 2;
+      ctx.fillText(ch, 0, 0);
+      ctx.restore();
+    });
+  }
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBackground();
+  drawText(text);
+})();
+</script>
+<script>
+document.getElementById('contactForm')?.addEventListener('submit', async e => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const data = new FormData(form);
+  const status = document.getElementById('formStatus');
+  status.style.color = 'black';
+  status.textContent = 'Sending...';
+
+  try {
+    const res = await fetch(form.action, { method: 'POST', body: data });
+    const json = await res.json();
+    if (json.status === 'success') {
+      alert('Mail sent successfully!');
+      status.style.color = 'green';
+      status.textContent = json.message;
+      form.reset();
+      // reload for new captcha
+      setTimeout(() => location.reload(), 1500);
+    } else {
+      alert(json.message || 'Message sending failed.');
+      status.style.color = 'red';
+      status.textContent = json.message;
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Message sending failed.');
+    status.style.color = 'red';
+    status.textContent = 'Message sending failed.';
+  }
+});
+</script>
+<script>
+  const phoneInput = form.phone.value.trim();
+const digitsOnly = phoneInput.replace(/\D/g, '');
+
+if (!/^\d{10}$/.test(digitsOnly)) {
+  status.style.color = 'red';
+  status.textContent = 'Please enter a valid 10-digit phone number.';
+  return; // stop submission
+}
+</script>
 
 </body>
 </html>
